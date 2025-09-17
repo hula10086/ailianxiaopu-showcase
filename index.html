@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱恋小铺 - 数据回忆录</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 头部导航 -->
+        <header class="header">
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-heart"></i>
+                    <span>爱恋小铺</span>
+                </div>
+                <nav class="nav">
+                    <a href="#upload" class="nav-link active">上传数据</a>
+                    <a href="#dashboard" class="nav-link">数据概览</a>
+                    <a href="#memories" class="nav-link">美好回忆</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="main">
+            <!-- 上传区域 -->
+            <section id="upload" class="upload-section">
+                <div class="container">
+                    <div class="upload-card">
+                        <h1 class="title">重温我们的美好时光</h1>
+                        <p class="subtitle">上传您的小程序导出数据，重新体验那些珍贵的时刻</p>
+
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-content">
+                                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                <h3>拖拽文件到此处</h3>
+                                <p>或点击选择文件</p>
+                                <input type="file" id="fileInput" accept=".json" style="display: none;">
+                                <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                                    <i class="fas fa-folder-open"></i> 选择文件
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="file-info" id="fileInfo" style="display: none;">
+                            <div class="file-details">
+                                <i class="fas fa-file-alt"></i>
+                                <span id="fileName"></span>
+                                <span id="fileSize"></span>
+                            </div>
+                            <button class="analyze-btn" onclick="analyzeData()">
+                                <i class="fas fa-search"></i> 分析数据
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 数据概览 -->
+            <section id="dashboard" class="dashboard-section" style="display: none;">
+                <div class="container">
+                    <h2 class="section-title">数据概览</h2>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number" id="checkinCount">0</div>
+                                <div class="stat-label">打卡记录</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-smile"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number" id="moodCount">0</div>
+                                <div class="stat-label">心情记录</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number" id="taskCount">0</div>
+                                <div class="stat-label">任务记录</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-sticky-note"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number" id="noteCount">0</div>
+                                <div class="stat-label">笔记记录</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 美好回忆 -->
+            <section id="memories" class="memories-section" style="display: none;">
+                <div class="container">
+                    <h2 class="section-title">美好回忆</h2>
+
+                    <!-- 分类标签 -->
+                    <div class="filter-tabs">
+                        <button class="tab-btn active" data-filter="all">全部</button>
+                        <button class="tab-btn" data-filter="checkin">打卡</button>
+                        <button class="tab-btn" data-filter="mood">心情</button>
+                        <button class="tab-btn" data-filter="task">任务</button>
+                        <button class="tab-btn" data-filter="note">笔记</button>
+                    </div>
+
+                    <!-- 回忆列表 -->
+                    <div class="memories-grid" id="memoriesGrid">
+                        <!-- 动态生成的内容 -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2025 爱恋小铺 - 记录我们的甜蜜时光</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
