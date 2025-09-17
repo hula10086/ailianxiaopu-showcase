@@ -370,10 +370,22 @@ class LoveDataShowcase {
     }
 }
 
+// 全局变量存储实例
+let loveDataShowcase;
+
 // 初始化应用
 document.addEventListener('DOMContentLoaded', () => {
-    new LoveDataShowcase();
+    loveDataShowcase = new LoveDataShowcase();
 });
+
+// 全局函数供HTML按钮调用
+function analyzeData() {
+    if (loveDataShowcase) {
+        loveDataShowcase.analyzeData();
+    } else {
+        console.error('应用尚未初始化');
+    }
+}
 
 // 添加拖拽样式
 const style = document.createElement('style');
